@@ -1,1 +1,5 @@
-<h1>Hello World</h1>
+<% @tweets.each do |tweet| %>
+  <p><%= tweet.name %></p>
+  <p><%= tweet.text %></p>
+  <p><%= tweet.image %></p>
+<% end %>
