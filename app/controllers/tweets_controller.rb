@@ -12,6 +12,13 @@ class TweetsController < ApplicationController
     @tweet = Tweet.create(tweet_params)
   end
   
+  def destory
+    @tweet = Tweet.find(params[:id])
+    if current_user.id == @tweet.user_id
+      @tweet.destory
+    end
+  end
+  
   private
   def tweet_params
     params.permit(:text, :image).merge(user_id: current_user.id)
