@@ -34,7 +34,7 @@
                 </li>
               </ul>
             </span>
-            <%= link_to "製品登録", new_tweet_path, method: :get %>
+            <%= link_to "製品登録", new_tweet_path, method: :get, class: "post" %>
           </div>
         <% else %>
           <div class="grid-6">
@@ -44,7 +44,7 @@
         <% end %>
       </div>
     </header>
-
+    
     <%= yield %>
 
     <footer>
