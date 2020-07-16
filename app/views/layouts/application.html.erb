@@ -26,8 +26,15 @@
         <h1 class="grid-6"><a href="/">DepuySynthes PRODUCT</a></h1>
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
+            <span><%= current_user.nickname %>
+              <ul class="user__info">
+                <li>
+                  <%= link_to "マイページ", user_path(current_user.id), method: :get %>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                </li>
+              </ul>
+            </span>
             <%= link_to "製品登録", new_tweet_path, method: :get %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           </div>
         <% else %>
           <div class="grid-6">
