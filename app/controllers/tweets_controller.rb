@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :move_to_index, except: :index
+  before_action :move_to_index, except: [:index, :show]
   
   def index
     @tweets = Tweet.includes(:user).all.order("created_at DESC").page(params[:page]).per(3)
@@ -30,9 +30,13 @@ class TweetsController < ApplicationController
     end
   end
   
+  def show
+    @tweet = Tweet.find(params[:id])
+  end
+  
   private
   def tweet_params
-    params.permit(:text, :image).merge(user_id: current_user.id)
+    params.permit(:text, :image, :detail).merge(user_id: current_user.id)
   end
   
   def move_to_index

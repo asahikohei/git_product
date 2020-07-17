@@ -6,6 +6,9 @@
           <span><%= image_tag "arrow_top.png" %></span>
           <ul class="more_list">
             <li>
+              <%= link_to "詳細", tweet_path(tweet.id), method: :get %>
+            </li>
+            <li>
               <%= link_to "編集", edit_tweet_path(tweet.id), method: :get %>
             </li>
             <li>
@@ -16,7 +19,7 @@
       <% end %>
       <%= simple_format(tweet.text) %>
       <span class="name">
-        <a herf="/users/<%= tweet.user_id %>"><span>投稿者</span><%= tweet.user.nickname %></a>
+        <a herf="/users/<%= tweet.user_id %>"><span>登録者</span><%= tweet.user.nickname %></a>
       </span>
     </div>
   <% end %>
