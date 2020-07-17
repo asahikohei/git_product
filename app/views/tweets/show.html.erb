@@ -18,15 +18,28 @@
         <a herf="/users/<%= @tweet.user_id %>"><span>登録者</span><%= @tweet.user.nickname %></a>
       </span>
     </div>
+    
     <div class="container">
-      <h3>Product Summary</h3>
-      <%= simple_format(@tweet.detail) %>
+      <h3>【Product Summary】</h3>
+        <%= simple_format(@tweet.detail) %>
     </div>
-    <div class="container">
-      <% if user_signed_in? %>
-        <%= form_tag("/tweets/#{<%= @tweet.id %>}/comments", method: :post) do %>
-          <textarea name="text", placeholder="コメントする", rows="2", cols="30"></textarea>
-          <input type="submit", value="コメント">
+    
+    <div class="comments">
+      <h3>【comment一覧】</h3>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><a href="user/comment.user_id"><%= comment.user.nickname %></a></strong>
+            <%= simple_format(comment.text) %>
+          </p>
+        <% end %>
+    </div>
+    
+    <div class="container"> 
+    <% if current_user %>
+      <%= form_tag("/tweets/#{@tweet.id}/comments", method: :post) do %>
+        <textarea name="text" placeholder="コメント" rows="2" cols="30"></textarea>
+        <input type="submit" value="COMMENT">
       <% end %>
+    <% end %>
     </div>
 </div>
