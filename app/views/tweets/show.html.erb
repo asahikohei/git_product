@@ -22,4 +22,11 @@
       <h3>Product Summary</h3>
       <%= simple_format(@tweet.detail) %>
     </div>
+    <div class="container">
+      <% if user_signed_in? %>
+        <%= form_tag("/tweets/#{<%= @tweet.id %>}/comments", method: :post) do %>
+          <textarea name="text", placeholder="コメントする", rows="2", cols="30"></textarea>
+          <input type="submit", value="コメント">
+      <% end %>
+    </div>
 </div>
