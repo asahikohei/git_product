@@ -18,4 +18,8 @@
         <a herf="/users/<%= @tweet.user_id %>"><span>投稿者</span><%= @tweet.user.nickname %></a>
       </span>
     </div>
+    <div class="container">
+      <h3>Product Summary</h3>
+      <%= simple_format(@tweet.detail) %>
+    </div>
 </div>
