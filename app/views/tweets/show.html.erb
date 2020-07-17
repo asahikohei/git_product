@@ -15,7 +15,7 @@
       <% end %>
       <%= simple_format(@tweet.text) %>
       <span class="name">
-        <a herf="/users/<%= @tweet.user_id %>"><span>投稿者</span><%= @tweet.user.nickname %></a>
+        <a herf="/users/<%= @tweet.user_id %>"><span>登録者</span><%= @tweet.user.nickname %></a>
       </span>
     </div>
     <div class="container">
